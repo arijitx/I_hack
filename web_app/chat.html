@@ -11,12 +11,16 @@
       }
 
       #me_box{
-        background-color:#eeeeee;
-        border-width: medium;
+        background-color:#c7ff3b;
+        border-width: 40px;
         min-height: 40px;
-        width: 300px;
+        width: 400px;
+        vertical-align:
         border-radius: 20px;
         border-color: #fff;
+        text-align: center;
+        margin-left: 5px;
+        margin-top: 5px;
       }
 
       #bot_box{
@@ -26,6 +30,11 @@
         width: 300px;
         border-radius: 20px;
         border-color: #fff;
+        text-align: center;
+        margin-left: 5px;
+        margin-top: 5px;
+
+
       }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -41,17 +50,21 @@
       <div class="form-group">
        <textarea id="msg" class="form-control" rows="5" ></textarea>
       </div>
+
     </div>
-    <div id="me_box">
-    </div>
-    <div id="bot_box">
-    </div>
+
   <script>
     $(document).keypress(function(e) {
         if(e.which == 13) {
             var text=$('#msg').val();
-            var url='localhost:5005/conversations/default/parse';
-            
+            $('#msg').val('');
+            var url='http://localhost:5005/conversations/default/parse';
+            $('#chat_box').append('<div id="me_box">'+text+'</div>');
+            var data={"query":text};
+            $.get('/chat?msg='+text , function(data, status){
+                $('#chat_box').append('<div id="bot_box">'+data['next_action']+'</div>');
+                $('#chat_box').animate({ scrollTop: $('#chat_box').prop("scrollHeight")}, 1000);
+            });
         }
     });
   </script>
