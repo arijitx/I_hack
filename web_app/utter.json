@@ -1,0 +1,19 @@
+{
+  "utter_greet": ["hey there!","hii!!","hello"],
+  "utter_goodbye": ["goodbye :(","Bye-bye", "Bye"],
+  "utter_default": ["default message"],
+  "utter_ack_dosearch": ["ok let me see what I can find", "let me search and let you know"],
+  "utter_ack_findalternatives": ["ok let me see what else there is", "let me find alternatives for you"],
+  "utter_ack_makereservation": ["ok making a reservation", "ok confirming your booking", "ok working on your booking"],
+  "utter_ask_cuisine": ["what kind of cuisine would you like?", "Which type of cuisine do you like?","what kind of food do you prefer?"],
+  "utter_ask_helpmore": ["is there anything more that I can help with?", "Would you like any further help"],
+  "utter_ask_howcanhelp": ["how can I help you?", "how can I assist you?" , "how can I serve you?"],
+  "utter_ask_location": ["in which city?", "please provide your location?", "Which area?"],
+  "utter_ask_moreupdates": ["anything else you'd like to modify?", "would you like to modify your order"],
+  "utter_ask_numpeople":["for how many people?", "how many people will accompany you?","please provide the number of people you want booking for?"],
+  "utter_ask_price": ["in which price range?", "you want restaurants of what price range?"],
+  "utter_on_it": ["I'm on it", "I'm working on it"],
+  "utter_placeorder": ["Your order has been placed! Thankyou", "We have placed your order! Thanks"],
+  "utter_addtoorder": ["Your order has been changed accordingly", "your request for repeating the last order with changes has been processed!!"],
+  "utter_repeatorder": ["Your last order has been placed again", "your request for repeating the last order has been processed!!"]
+}

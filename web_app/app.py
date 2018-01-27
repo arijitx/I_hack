@@ -21,10 +21,26 @@ def save_user():
 
 @app.route('/chat',methods=['GET', 'POST'])
 def chat():
-    msg=request.args.get('msg');
-    url='http://localhost:5005/conversations/default/parse?q=';
-    r = requests.get('http://localhost:5005/conversations/default/parse?q='+msg)
-    return jsonify(r.json())
+    msg=request.args.get('msg')
+    m_type=request.args.get('type')
+    print('chat->',m_type)
+    response={}
+    if(m_type == 'normal'):
+        url='http://localhost:5005/conversations/'+session['u_name']+'/parse?q='
+    else:
+        url='http://localhost:5005/conversations/'+session['u_name']+'/continue'
+    if(m_type=='normal'):
+        r = requests.get(url+msg)
+    else:
+        post_data={"executed_action": msg, "events": []}
+        r = requests.post(url,json=post_data)
+
+    response['action']=r.json()['next_action']
+    response['response']=action_to_string(response['action'])
+    return jsonify(response)
+
+def action_to_string(action):
+    if 'utter' in action:
 
 
 if __name__ == "__main__":

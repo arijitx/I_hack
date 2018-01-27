@@ -58,15 +58,29 @@
         if(e.which == 13) {
             var text=$('#msg').val();
             $('#msg').val('');
-            var url='http://localhost:5005/conversations/default/parse';
             $('#chat_box').append('<div id="me_box">'+text+'</div>');
-            var data={"query":text};
-            $.get('/chat?msg='+text , function(data, status){
-                $('#chat_box').append('<div id="bot_box">'+data['next_action']+'</div>');
-                $('#chat_box').animate({ scrollTop: $('#chat_box').prop("scrollHeight")}, 1000);
-            });
+            send_msg(text,'normal',1);
         }
     });
+
+    function send_msg(msg,type,depth){
+      $.get('/chat?msg='+msg+'&type='+type , function(data, status){
+          var type=data['type'];
+          var action=data['action'];
+          console.log(action,depth);
+          if(action=='action_listen'){
+            return;
+          }
+
+          $('#chat_box').append('<div id="bot_box">'+data['response']+'</div>');
+          if(type=='continue'){
+            if(msg==action){
+              return
+            }
+          }
+          send_msg(action,'continue',depth+1);
+      });
+    }
   </script>
   </body>
 </html>
