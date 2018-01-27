@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+      #chat_box{
+        overflow: auto;
+        height: 450px;
+        background-color: #e6e6e6;
+        border-width: medium;
+        border-radius: 5px;
+        border-color: #fff;
+      }
+
+      #me_box{
+        background-color:#eeeeee;
+        border-width: medium;
+        min-height: 40px;
+        width: 300px;
+        border-radius: 20px;
+        border-color: #fff;
+      }
+
+      #bot_box{
+        background-color:#7e95ff;
+        border-width: medium;
+        min-height: 40px;
+        width: 300px;
+        border-radius: 20px;
+        border-color: #fff;
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container fluid">
+      <br>
+      <div id="chat_box" class=".col-sm-12">
+      </div>
+      <br>
+      <div class="form-group">
+       <textarea id="msg" class="form-control" rows="5" ></textarea>
+      </div>
+    </div>
+    <div id="me_box">
+    </div>
+    <div id="bot_box">
+    </div>
+  <script>
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            var text=$('#msg').val();
+            var url='localhost:5005/conversations/default/parse';
+            
+        }
+    });
+  </script>
+  </body>
+</html>
