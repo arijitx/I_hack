@@ -20,7 +20,7 @@ update metadata.json with your MITIE total_word_feature_extractor.dat path
 
 3. Change Zomato API key in web_app/response_gen.py line 20 and 25
 
-4. 
+4.
 
       bash run_rasa_service.sh
       bash run_web_app.sh
@@ -33,8 +33,6 @@ update metadata.json with your MITIE total_word_feature_extractor.dat path
 
 ## Collaborators
 
-[Debanjan](https://github.com/debanjanxy)
-
-[Himadri](https://github.com/pheonix123)
-
-[Smartika]
+-[Debanjan](https://github.com/debanjanxy)
+-[Himadri](https://github.com/pheonix123)
+-[Smartika]
