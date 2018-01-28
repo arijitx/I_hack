@@ -31,8 +31,8 @@ update metadata.json with your MITIE total_word_feature_extractor.dat path
 ![screen_1](imgs/screen_1.gif)
 ![screen_2](imgs/screen_2.gif)
 
-## Collaborators
+## Team
 
--[Debanjan](https://github.com/debanjanxy)
--[Himadri](https://github.com/pheonix123)
--[Smartika]
+- [Debanjan](https://github.com/debanjanxy)
+- [Himadri](https://github.com/pheonix123)
+- [Smartika]
