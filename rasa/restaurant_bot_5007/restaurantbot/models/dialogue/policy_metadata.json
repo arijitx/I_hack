@@ -1,0 +1,22 @@
+{
+  "action_fingerprints": {
+    "action_listen": {
+      "slots": [
+        "info", 
+        "cuisine", 
+        "people", 
+        "food", 
+        "price", 
+        "order_id", 
+        "location"
+      ]
+    }
+  }, 
+  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble", 
+  "max_history": 7, 
+  "policy_names": [
+    "rasa_core.policies.memoization.MemoizationPolicy", 
+    "rasa_core.policies.res.RestaurantPolicy"
+  ], 
+  "rasa_core": "0.8.0a4"
+}

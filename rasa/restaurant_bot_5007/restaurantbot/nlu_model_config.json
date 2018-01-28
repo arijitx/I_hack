@@ -1,0 +1,7 @@
+{
+  "pipeline": "mitie",
+  "path" : "./models",
+  "project": "nlu",
+  "data" : "./data/franken_data.json",
+  "mitie_file" : "./home/himadri/Desktop/MITIE-models/english/total_word_feature_extractor.dat"
+}

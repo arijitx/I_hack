@@ -1,26 +1,67 @@
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave" rel="stylesheet">
     <style>
+      .container{
+       font-family: 'Handlee', cursive;
+       font-size: 20px;
+      }
+      #header{
+        font-family: 'Sedgwick Ave', cursive;
+        font-size: 60px;
+
+      }
+      #msg{
+        font-size: 20px;
+      }
+      #user{
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        border: 1px black solid;
+        float: right;
+        margin-right: 5px;
+        margin-top: 5px;
+        background-image: url('https://www.shareicon.net/download/2016/09/01/822711_user_512x512.png');
+        background-size: 40px 40px;
+      }
+      #bot{
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        border: 1px black solid;
+        float: left;
+        margin-left: 5px;
+        margin-top: 5px;
+        background-image: url('https://t3.ftcdn.net/jpg/01/63/20/00/240_F_163200080_Fl6UJbhjvThKwy3KFMGgiAXQX5mHBmEG.jpg');
+        background-size: 40px 40px;
+      }
       #chat_box{
         overflow: auto;
-        height: 450px;
+        height: 400px;
+        font-family: 'Handlee', cursive;
+        font-size: 30px;
         background-color: #e6e6e6;
         border-width: medium;
         border-radius: 5px;
         border-color: #fff;
+        border: 1px black solid;
       }
 
       #me_box{
         background-color:#c7ff3b;
         border-width: 40px;
         min-height: 40px;
-        width: 400px;
-        vertical-align:
-        border-radius: 20px;
+        width: 300px;
+        vertical-align: middle;
+        border-radius: 20px 1px 20px 20px;
         border-color: #fff;
         text-align: center;
-        margin-left: 5px;
+        float: right;
+        margin-right: 5px;
         margin-top: 5px;
+        border: 1px black solid;
       }
 
       #bot_box{
@@ -28,14 +69,23 @@
         border-width: medium;
         min-height: 40px;
         width: 300px;
-        border-radius: 20px;
+        border-radius: 20px 20px 20px 1px;
+        vertical-align: middle;
         border-color: #fff;
         text-align: center;
+        float: left;
         margin-left: 5px;
         margin-top: 5px;
-
-
+        border: 1px black solid;
       }
+
+      #logout{
+        float: right;
+        margin-right: 2px;
+        margin-top: 15px;
+        font-size: 20px;
+      }
+
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,14 +93,26 @@
   </head>
   <body>
     <div class="container fluid">
-      <br>
+      <div class="row">
+        <div class="col-sm-8">
+          <div id="header">
+            <img width="60px" height="60px" src="http://icons.iconarchive.com/icons/sonya/swarm/256/Fast-Food-icon.png">FoodBot
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <button id="logout" type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+          </button>
+        </div>
+      </div>
       <div id="chat_box" class=".col-sm-12">
       </div>
       <br>
       <div class="form-group">
-       <textarea id="msg" class="form-control" rows="5" ></textarea>
+       <textarea id="msg" class="form-control" rows="4" ></textarea>
       </div>
-
+      <hr>
+      <center>What The Hack | I_Hack 2018 </center>
     </div>
 
   <script>
@@ -58,9 +120,16 @@
         if(e.which == 13) {
             var text=$('#msg').val();
             $('#msg').val('');
-            $('#chat_box').append('<div id="me_box">'+text+'</div>');
+            $('#chat_box').append('<div class="col-sm-12"><div id="user"></div><div id="me_box">'+text+'</div></div>');
+            $("#chat_box").animate({ scrollTop: $('#chat_box').prop("scrollHeight")}, 1000);
             send_msg(text,'normal',1);
         }
+    });
+
+    $('#logout').click(function(){
+      $.get('/logout' , function(data, status){
+        location.reload();
+      });
     });
 
     function send_msg(msg,type,depth){
@@ -72,7 +141,7 @@
             return;
           }
 
-          $('#chat_box').append('<div id="bot_box">'+data['response']+'</div>');
+          $('#chat_box').append('<div class="col-sm-12"><div id="bot"></div><div id="bot_box">'+data['response']+'</div></div>');
           if(type=='continue'){
             if(msg==action){
               return
